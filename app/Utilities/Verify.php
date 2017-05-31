@@ -3,7 +3,7 @@
 namespace App\Utilities;
 
 
-class HelperVerify
+class Verify
 {
     /*
     * 加密 $array中务必包含 helperkey

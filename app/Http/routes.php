@@ -25,3 +25,7 @@ Route::controller('/manage/index', 'Manage\IndexController');
 Route::controller('/manage/main', 'Manage\MainController');
 Route::controller('/manage/user', 'Manage\UserController');
 Route::controller('/manage/manager', 'Manage\ManagerController');
+
+
+//api
+Route::controller('/web/version100/app', 'Web\Version100\AppController');
