@@ -4,17 +4,17 @@ namespace App\Http\Controllers\Manage;
 
 use App\Http\Controllers\Manage\BaseController;
 use Illuminate\Http\Request;
-use App\Model\User;
+use App\Model\Article;
 
-class UserController extends BaseController
+class ArticleController extends BaseController
 {
     public function getIndex(Request $request)
     {
-        $users = User::select('id', 'mobile', 'nickname', 'state', 'created_at')
+        $articles = Article::select('id', 'type', 'title', 'state', 'created_at')
             ->orderBy('created_at', 'desc')
             ->paginate(15);
 
-        return view('manage.user.index', ['users' => $users]);
+        return view('manage.article.index', ['articles' => $articles]);
     }
 
     public function getClose(Request $request)
@@ -22,10 +22,10 @@ class UserController extends BaseController
         $id = $request->input('id');
 
         $data = [
-            'state' => User::STATE_2
+            'state' => Article::STATE_2
         ];
 
-        $result = User::where('id', $id)
+        $result = Article::where('id', $id)
             ->update($data);
 
         if ($result) {
@@ -50,10 +50,10 @@ class UserController extends BaseController
         $id = $request->input('id');
 
         $data = [
-            'state' => User::STATE_1
+            'state' => Article::STATE_1
         ];
 
-        $result = User::where('id', $id)
+        $result = Article::where('id', $id)
             ->update($data);
 
         if ($result) {
@@ -67,30 +67,6 @@ class UserController extends BaseController
                 'status' => 0,
                 'data' => null,
                 'info' => '打开失败',
-            ];
-        }
-
-        return response()->json($return);
-    }
-
-    public function getDel(Request $request)
-    {
-        $id = $request->input('id');
-
-        $result = User::where('id', $id)
-            ->delete();
-
-        if ($result) {
-            $return = [
-                'status' => 1,
-                'data' => null,
-                'info' => '删除成功',
-            ];
-        } else {
-            $return = [
-                'status' => 0,
-                'data' => null,
-                'info' => '删除失败',
             ];
         }
 

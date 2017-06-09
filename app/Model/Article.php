@@ -12,7 +12,7 @@ class Article extends Model
     const STATE_1 = 1; //正常
     const STATE_2 = 2; //删除
 
-    public static $perPage = 20; //每页数量
+    public static $perPageNumber = 20; //每页数量
 
     public function comments()
     {

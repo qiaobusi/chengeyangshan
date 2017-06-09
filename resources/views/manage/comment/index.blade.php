@@ -25,7 +25,7 @@
             <div class="col-sm-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">用户</h3>
+                        <h3 class="box-title">评论</h3>
                         <div class="box-tools pull-right">
                         </div>
                     </div>
@@ -36,31 +36,27 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>账号</th>
-                                    <th>姓名</th>
-                                    <th>注册时间</th>
+                                    <th>内容</th>
+                                    <th>发布时间</th>
                                     <th>状态</th>
                                     <th style="width: 200px; text-align:right;">操作</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($users as $user)
-                                <tr>
-                                    <td>{{ $user->id }}</td>
-                                    <td>{{ $user->mobile }}</td>
-                                    <td>{{ $user->nickname }}</td>
-                                    <td>{{ $user->created_at }}</td>
-                                    <td style="color:#ff0000;">@if($user->state == 1) 正常 @else 关闭 @endif</td>
-                                    <td style="width: 200px; text-align:right;">
-                                        @if($user->state == 1)
-                                            <button type="button" class="btn btn-sm btn-info" onclick="doclose({{ $user->id }})">关闭</button>
-                                        @else
-                                            <button type="button" class="btn btn-sm btn-info" onclick="doopen({{ $user->id }})">开启</button>
-                                        @endif
-
-                                        <button type="button" class="btn btn-sm btn-danger" onclick="del({{ $user->id }})">删除</button>
-                                    </td>
-                                </tr>
+                                @foreach($comments as $comment)
+                                    <tr>
+                                        <td>{{ $comment->id }}</td>
+                                        <td>{{ $comment->content }}</td>
+                                        <td>{{ $comment->created_at }}</td>
+                                        <td style="color:#ff0000;">@if($comment->state == 1) 正常 @else 关闭 @endif</td>
+                                        <td style="width: 200px; text-align:right;">
+                                            @if($comment->state == 1)
+                                                <button type="button" class="btn btn-sm btn-info" onclick="doclose({{ $comment->id }})">关闭</button>
+                                            @else
+                                                <button type="button" class="btn btn-sm btn-info" onclick="doopen({{ $comment->id }})">开启</button>
+                                            @endif
+                                        </td>
+                                    </tr>
                                 @endforeach
                                 </tbody>
                             </table>
@@ -69,45 +65,23 @@
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer clearfix">
-                        {!! $users->render() !!}
+                        {!! $comments->render() !!}
                     </div>
                     <!-- /.box-footer -->
                 </div>
                 <!-- /.box -->
             </div>
-            </div>
         </div>
-        <!-- /.row -->
-    </section>
-    <!-- /.content -->
+</div>
+<!-- /.row -->
+</section>
+<!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 
 <script type="text/javascript">
 
     var dataId = 0;
-
-    function del(id) {
-        dataId = id;
-        showConfirm('删除', '确认删除？', delUser);
-    }
-
-    function delUser() {
-        $.ajax({
-            url: '{{url("manage/user/del")}}',
-            type: 'GET',
-            data: {
-                'id': dataId,
-            },
-            dataType: 'JSON',
-            success: function(data) {
-                showAlert('提示', data.info, null);
-                if (data.status == 1) {
-                    window.location.reload();
-                }
-            }
-        });
-    }
 
     function doclose(id) {
         dataId = id;
@@ -116,7 +90,7 @@
 
     function docloseUser() {
         $.ajax({
-            url: '{{url("manage/user/close")}}',
+            url: '{{url("manage/comment/close")}}',
             type: 'GET',
             data: {
                 'id': dataId,
@@ -138,7 +112,7 @@
 
     function doopenUser() {
         $.ajax({
-            url: '{{url("manage/user/open")}}',
+            url: '{{url("manage/comment/open")}}',
             type: 'GET',
             data: {
                 'id': dataId,

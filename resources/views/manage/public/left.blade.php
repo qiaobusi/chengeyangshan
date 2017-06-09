@@ -48,6 +48,30 @@
 			<li><a href="{{ url('manage/user/index') }}"><i class="fa fa-circle-o"></i>用户</a></li>
 		  </ul>
 		</li>
+		<li class="active treeview">
+			  <a href="#">
+				  <i class="fa fa-dashboard"></i> <span>文章</span>
+				  <span class="pull-right-container">
+			  <i class="fa fa-angle-left pull-right"></i>
+			</span>
+			  </a>
+			  <ul class="treeview-menu">
+
+				  <li><a href="{{ url('manage/article/index') }}"><i class="fa fa-circle-o"></i>文章</a></li>
+			  </ul>
+		</li>
+		<li class="active treeview">
+			  <a href="#">
+				  <i class="fa fa-dashboard"></i> <span>评论</span>
+				  <span class="pull-right-container">
+			  <i class="fa fa-angle-left pull-right"></i>
+			</span>
+			  </a>
+			  <ul class="treeview-menu">
+
+				  <li><a href="{{ url('manage/comment/index') }}"><i class="fa fa-circle-o"></i>评论</a></li>
+			  </ul>
+		</li>
 	  </ul>
       
     </section>

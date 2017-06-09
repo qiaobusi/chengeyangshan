@@ -12,6 +12,8 @@ use App\Model\User;
 use App\Model\Article;
 use App\Model\Tag;
 
+use RedisDB;
+
 class AppController extends BaseController
 {
     public function getTest(Request $request)
@@ -71,7 +73,7 @@ class AppController extends BaseController
             ->orderBy('id', 'asc')
             ->get();
 
-        $perPage = isset($all['perPage']) ? $all['perPage'] : Article::$perPage;
+        $perPage = isset($all['perPage']) ? $all['perPage'] : Article::$perPageNumber;
         $tagId = $all['tagId'];
         $lastId = $all['lastId'];
 
@@ -144,7 +146,7 @@ class AppController extends BaseController
             ->orderBy('id', 'asc')
             ->get();
 
-        $perPage = isset($all['perPage']) ? $all['perPage'] : Article::$perPage;
+        $perPage = isset($all['perPage']) ? $all['perPage'] : Article::$perPageNumber;
         $tagId = $all['tagId'];
         $lastId = $all['lastId'];
 
@@ -332,7 +334,7 @@ class AppController extends BaseController
 
         $id = $all['article_id'];
 
-        $perPage = isset($all['perPage']) ? $all['perPage'] : Comment::$perPage;
+        $perPage = isset($all['perPage']) ? $all['perPage'] : Comment::$perPageNumber;
         $lastId = $all['lastId'];
 
         if ($lastId == 0) {
@@ -546,6 +548,7 @@ class AppController extends BaseController
 
         return response()->json($return);
     }
+
 
 
 }

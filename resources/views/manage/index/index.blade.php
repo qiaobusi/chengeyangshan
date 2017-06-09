@@ -134,7 +134,7 @@
                             <label for="password" class="col-sm-2 control-label">密码</label>
 
                             <div class="col-sm-10">
-                                <input class="form-control" id="password" placeholder="账号" type="password">
+                                <input class="form-control" id="password" placeholder="密码" type="password">
                                 <span class="help-block" style="color:#f00;"></span>
                             </div>
                         </div>

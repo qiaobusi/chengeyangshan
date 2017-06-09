@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('nickname', 100)->unique();
             $table->string('password');
             $table->string('salt', 10);
+            $table->tinyInteger('state');
             $table->timestamps();
         });
     }

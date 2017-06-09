@@ -49,7 +49,7 @@
                                 <tr>
                                     <td>{{ $user->id }}</td>
                                     <td>{{ $user->mobile }}</td>
-                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->nickname }}</td>
                                     <td>{{ $user->created_at }}</td>
                                 </tr>
                                 @endforeach

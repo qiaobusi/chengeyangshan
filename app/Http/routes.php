@@ -25,6 +25,8 @@ Route::controller('/manage/index', 'Manage\IndexController');
 Route::controller('/manage/main', 'Manage\MainController');
 Route::controller('/manage/user', 'Manage\UserController');
 Route::controller('/manage/manager', 'Manage\ManagerController');
+Route::controller('/manage/article', 'Manage\ArticleController');
+Route::controller('/manage/comment', 'Manage\CommentController');
 
 
 //api

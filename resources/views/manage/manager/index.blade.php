@@ -77,7 +77,7 @@
 
 <script type="text/javascript">
 
-    var delId = 0;
+    var dataId = 0;
 
     function add() {
         window.location.href = '{{ url("manage/manager/add") }}';
@@ -89,16 +89,16 @@
     }
 
     function del(id) {
-        delId = id;
-        showConfirm('删除', '确认删除？', deleteManager);
+        dataId = id;
+        showConfirm('删除', '确认删除？', delManager);
     }
 
-    function deleteManager() {
+    function delManager() {
         $.ajax({
             url: '{{ url("manage/manager/del") }}',
             type: 'GET',
             data: {
-                'id': delId,
+                'id': dataId,
             },
             dataType: 'JSON',
             success: function(data) {
